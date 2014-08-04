@@ -1,0 +1,9 @@
+<h1>article-template-edits</h1>
+
+<ul>
+ {{#each model}}
+ <li>{{#link-to 'article-template-edit' this}}{{this.id}}{{/link-to}}</li>
+  {{/each}}
+</ul>
+
+{{outlet}}

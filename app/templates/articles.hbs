@@ -1,0 +1,14 @@
+<h1>Articles</h1>
+
+<p> {{#link-to 'article-template'}} Click here to view and edit an article template {{/link-to}} </p>
+
+
+<p> These are previously generated articles </p>
+
+<ul>
+ {{#each model}}
+ <li>{{#link-to 'article' this}}{{this.id}}{{/link-to}}</li>
+  {{/each}}
+</ul>
+
+{{outlet}}
