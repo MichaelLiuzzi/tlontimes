@@ -8,6 +8,7 @@ Tlontimesyo.Router.map(function () {
     this.route('create');
   });
 
-  this.resource('article-template'); 
+  this.resource('article-template');
+  this.resource('article-template-edit', {path: 'article-template/:article_id'}); 
   
 });

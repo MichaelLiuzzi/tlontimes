@@ -63,7 +63,21 @@
     <div class="row">
       <div class="col-md-12">
         <header id="article-header">
-          <h1> ARTICLE TITLE </h1>
+          {{#unless titleEdit}}
+          <h1> {{newTitle}} </h1>
+          {{/unless}}
+          {{#if titleEdit}}
+          {{textarea  cols="100" value=newTitle placeholder="Insert New Article Title Here"}}
+          {{/if}}
+
+
+          {{#unless articleTitleEditClick}}
+          <button {{action 'titleEditMethod'}}> Edit </button> 
+          {{/unless}}
+          {{#if articleTitleEditClick}}
+          <button {{action 'persistTitle'}}> Save </button>
+          {{/if}}
+
         </header>
       </div>
     </div>
