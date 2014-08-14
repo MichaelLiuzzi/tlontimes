@@ -63,9 +63,12 @@
     <div class="row">
       <div class="col-md-12">
         <header id="article-header">
+          <!-- IF WE'RE NOT EDITING DISPLAY THE TITLE (i.e. if titleEdit is false) --> 
           {{#unless titleEdit}}
           <h1> {{newTitle}} </h1>
           {{/unless}}
+
+          <!-- if titleEdit is true, display an editable text field whose value is bound to newTitle on the controller -->
           {{#if titleEdit}}
           {{textarea  cols="100" value=newTitle placeholder="Insert New Article Title Here"}}
           {{/if}}
@@ -75,7 +78,7 @@
           <button {{action 'titleEditMethod'}}> Edit </button> 
           {{/unless}}
           {{#if articleTitleEditClick}}
-          <button {{action 'persistTitle'}}> Save </button>
+          <button {{action 'persist' 'articleTitle' newTitle}}> Save </button>
           {{/if}}
 
         </header>
@@ -85,8 +88,45 @@
     <div class="row">
       <div class="col-md-12">
     <footer id = "article-byline">
-      <span id= "author"> AUTHOR NAME </span>
-      <time> TIME </time>
+
+    <!-- AUTHOR. RESIZE THIS DIV TO PROPERLY FIT TEXT BOX --> 
+
+    {{#unless authorEdit}}
+      <span id= "author"> {{newAuthor}} </span>
+    {{/unless}}
+      
+
+       {{#if authorEdit}}
+          {{textarea  cols="40" rows="1" value=newAuthor placeholder="Insert New Author Here"}}
+       {{/if}}
+
+       {{#unless articleAuthorEditClick}}
+        <button {{action 'authorEditMethod'}}> Edit </button> 
+      {{/unless}}
+
+       {{#if articleAuthorEditClick}}
+        <button {{action 'persist' 'Author' newAuthor}}> Save </button>
+       {{/if}}
+
+     <!-- TIME -->
+      {{#unless timeEdit}}
+        <time> {{newTime}} </time>
+      {{/unless}}
+
+      {{#if timeEdit}}
+       {{textarea  cols="40" rows="1" value=newTime placeholder="Insert New Author Time"}}
+      {{/if}}
+
+      {{#unless articleTimeEditClick}}
+      <button {{action 'timeEditMethod'}}> Edit </button>
+      {{/unless}}
+
+      {{#if articleTimeEditClick}}
+      <button {{action 'persist' 'time' newTime}}> Save </button> 
+      {{/if}}
+
+
+
     </footer>
     </div>
     </div>
